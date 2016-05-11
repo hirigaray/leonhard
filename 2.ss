@@ -1,10 +1,4 @@
-(define sum-list 
-  (lambda (l)
-    (if (null? l)
-      0
-    (+ (car l) 
-       (sum-list (cdr l))))))
-
+(use-modules (srfi srfi-1))
 (define get-evens
   (lambda (n)
   (if (even? n)
@@ -17,5 +11,5 @@
     n
     (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))
 
-(display (sum-list (map get-evens (map fibonacci (iota 34)))))
+(display (fold + 0 (map get-evens (map fibonacci (iota 34)))))
 (newline)
