@@ -6,16 +6,12 @@
   (lambda (x)
     (* x x)))
 
-(define sum-aux
-  (lambda (in out)
-    (if (null? in)
-      out
-      (sum-aux (+ (car in) (sum-aux (cdr in)))))))
-
 (define sum
   (lambda (l)
-    (sum-aux l '())))
-
+    (if (null? l)
+      0
+      (+ (car l)
+         (sum (cdr l))))))
 (display
   (-
     (square (sum (iota 101)))
