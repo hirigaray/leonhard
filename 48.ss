@@ -4,4 +4,6 @@
   (lambda (n)
    (expt n n)))
 
-(display (fold + 0 (map self-power (cdr (iota 1001)))))
+(display
+  (fold + 0
+        (map self-power (cdr (iota 1001)))))
