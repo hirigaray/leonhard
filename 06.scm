@@ -12,9 +12,11 @@
       0
       (+ (car l)
          (sum (cdr l))))))
-(display
-  (-
-    (square (sum (iota 101)))
-    (sum (map square (iota 101)))))
 
+(define sqrtofsum-minus-sumofsqrts
+  (lambda (n)
+    (- (square (sum (iota n)))
+       (sum (map square (iota n))))))
+
+(display (sqrtofsum-minus-sumofsqrts 101))
 (newline)
