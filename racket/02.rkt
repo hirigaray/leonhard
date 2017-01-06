@@ -11,12 +11,12 @@
     (apply + l)))
 
 (define fibonacci
-  (lambda (n)
-  (if (< n 2)
-    n
-    (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))
+  (lambda (i)
+    (if (< i 2)
+      i
+      (+ (fibonacci (- i 1)) (fibonacci (- i 2))))))
 
-(define generate-fibonacci-series
+(define generate-fibonacci-sequence
   (lambda (n)
     (letrec
       ((aux (lambda (lim in out)
@@ -26,4 +26,4 @@
                   (aux lim (+ 1 in) (cons cur out)))))))
       (aux n 1 '()))))
 
-(display (sum (filter even? (generate-fibonacci-series 4000000))))
+(display (sum (filter even? (generate-fibonacci-sequence 4000000))))
