@@ -4,9 +4,12 @@
 
 ; Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 
+(define sum
+  (lambda (l)
+    (apply + l)))
+
 (define self-power
   (lambda (n)
    (expt n n)))
 
-(display (foldl + 0 (map self-power (cdr (range 1001)))))
-(newline)
+(display (sum (map self-power (cdr (range 1001)))))

@@ -16,4 +16,3 @@
        (aux n 2 '()))))
 
 (display (car (factorize 600851475143)))
-(newline)

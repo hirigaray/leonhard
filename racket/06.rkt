@@ -1,6 +1,11 @@
+#lang racket
 ; Problem #6:
 ; Find the difference between the sum of the squares of
 ; the first one hundred natural numbers and the square of the sum.
+
+(define sum
+  (lambda (l)
+    (apply + l)))
 
 (define square
   (lambda (x)
@@ -8,8 +13,7 @@
 
 (define sqrtofsum-minus-sumofsqrts
   (lambda (n)
-    (- (square (foldl + 0 (range n)))
-       (foldl + 0 (map square (range n))))))
+    (- (square (sum (range n)))
+       (sum (map square (range n))))))
 
 (display (sqrtofsum-minus-sumofsqrts 101))
-(newline)

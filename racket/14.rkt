@@ -29,20 +29,21 @@
   (lambda (x)
     (letrec
       ((aux (lambda (n l)
-            (if (= n 1)
-              l
-              (aux (collatz n) (+ l 1))))))
+              (if (= n 1)
+                l
+                (aux (collatz n) (+ l 1))))))
         (aux x 0))))
 
-(define clz-longest-chain-aux
-  (lambda (hn cl)
-    (if (= hn 0)
-      cl
-      (let ((new (collatz-length hn)))
-        (if (> new (cdr cl))
-          (clz-longest-chain-aux (- hn 1) (cons hn new))
-          (clz-longest-chain-aux (- hn 1) cl))))))
+(define collatz-longest-chain-with-limit
+  (lambda (sn)
+    (letrec
+      ((aux (lambda (n cl)
+              (if (= n 0)
+                cl
+                (let ((new (collatz-length n)))
+                  (if (> new (cdr cl))
+                    (aux (- n 1) (cons n new))
+                    (aux (- n 1) cl)))))))
+      (aux sn (cons 0 0)))))
 
-(define clz-longest-chain
-  (lambda (hn)
-    (clz-longest-chain-aux hn (cons 0 0))))
+(display (collatz-longest-chain-with-limit 1000000))

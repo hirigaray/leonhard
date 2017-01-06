@@ -6,6 +6,10 @@
 
 ; By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
+(define sum
+  (lambda (l)
+    (apply + l)))
+
 (define fibonacci
   (lambda (n)
   (if (< n 2)
@@ -22,5 +26,4 @@
                   (aux lim (+ 1 in) (cons cur out)))))))
       (aux n 1 '()))))
 
-(display (foldl + 0 (filter even? (generate-fibonacci-series 4000000))))
-(newline)
+(display (sum (filter even? (generate-fibonacci-series 4000000))))
