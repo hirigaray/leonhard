@@ -6,17 +6,10 @@
   (lambda (x)
     (* x x)))
 
-(define sum
-  (lambda (l)
-    (if (null? l)
-      0
-      (+ (car l)
-         (sum (cdr l))))))
-
 (define sqrtofsum-minus-sumofsqrts
   (lambda (n)
-    (- (square (sum (iota n)))
-       (sum (map square (iota n))))))
+    (- (square (foldl + 0 (range n)))
+       (foldl + 0 (map square (range n))))))
 
 (display (sqrtofsum-minus-sumofsqrts 101))
 (newline)
