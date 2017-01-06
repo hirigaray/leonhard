@@ -10,7 +10,7 @@
       ((aux (lambda (x div out)
               (if (= x 1)
                 out
-                (if (= 0 (modulo x div))
+                (if (= 0 (remainder x div))
                   (aux (/ x div) div (cons div out))
                   (aux x (+ div 1) out))))))
        (aux n 2 '()))))
