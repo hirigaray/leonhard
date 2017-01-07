@@ -1,4 +1,5 @@
 #lang racket
+
 ; Problem #48
 ; The series, 1^1 + 2^2 + 3^3 + ... + 10^10 = 10405071317.
 
@@ -12,4 +13,5 @@
   (lambda (n)
    (expt n n)))
 
-(display (sum (map self-power (cdr (range 1001)))))
+; Solution
+(sum (map self-power (cdr (range 1001))))
