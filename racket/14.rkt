@@ -1,4 +1,7 @@
 #lang racket
+
+(require "recurse.rkt")
+
 ; Problem #14
 ; The following iterative sequence is defined for the set of positive
 ; integers:
@@ -19,31 +22,26 @@
 ; NOTE: Once the chain starts the terms are allowed to go above one million.
 
 (define collatz
-  (lambda (x)
+  (lambda (n)
     (cond
-      ((= x 1) 1)
-      ((= 0 (remainder x 2)) (/ x 2))
-      (else (+ 1 (* x 3))))))
+      ((= n 1) 1)
+      ((= 0 (remainder n 2)) (/ n 2))
+      (else (+ 1 (* n 3))))))
 
-(define collatz-length
-  (lambda (x)
-    (letrec
-      ((aux (lambda (n l)
-              (if (= n 1)
-                l
-                (aux (collatz n) (+ l 1))))))
-        (aux x 0))))
+(define (collatz-length n)
+  (recurse (aux in out) (n 0)
+    (if (= in 1)
+      out
+      (aux (collatz in) (+ out 1)))))
 
-(define collatz-longest-chain-with-limit
-  (lambda (sn)
-    (letrec
-      ((aux (lambda (n cl)
-              (if (= n 0)
-                cl
-                (let ((new (collatz-length n)))
-                  (if (> new (cdr cl))
-                    (aux (- n 1) (cons n new))
-                    (aux (- n 1) cl)))))))
-      (aux sn (cons 0 0)))))
+(define (collatz-longest-chain-with-limit lim)
+  (recurse (aux in out) (lim '(0 . 0))
+    (if (= in 0)
+      out
+      (let ((new (collatz-length in)))
+        (if (> new (cdr out))
+          (aux (- in 1) (cons in new))
+          (aux (- in 1) out))))))
 
-(display (collatz-longest-chain-with-limit 1000000))
+; Solution
+(collatz-longest-chain-with-limit 1000000)
