@@ -19,4 +19,4 @@
           (sum (map square l))))))
 
 ; Solution
-(sqrtofsum-minus-sumofsqrts 101)
+(squareofsum-minus-sumofsquares 101)
