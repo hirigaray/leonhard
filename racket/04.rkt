@@ -30,5 +30,5 @@
 ; Solution
 (apply max
        (filter palindrome-number?
-               (map (curry (apply *))
-                    (cartesian-product (make-list 2 (range 100 1000))))))
+               (map (curry apply *)
+                    (apply cartesian-product (make-list 2 (range 100 1000))))))
