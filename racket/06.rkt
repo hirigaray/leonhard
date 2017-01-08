@@ -12,11 +12,7 @@
   (lambda (x)
     (* x x)))
 
-(define squareofsum-minus-sumofsquares
-   (lambda (n)
-     (let ((l (range n)))
-       (- (square (sum l))
-          (sum (map square l))))))
-
 ; Solution
-(squareofsum-minus-sumofsquares 101)
+(let ((l (range n)))
+  (- (square (sum l))
+     (sum (map square l))))
