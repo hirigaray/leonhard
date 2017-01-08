@@ -9,6 +9,8 @@
 ; Find the largest palindrome made from
 ; the product of two 3-digit numbers.
 
+(provide palindrome-number?)
+
 (define (integer->list n)
   (recurse (aux in out) (n '())
     (if (zero? in)
@@ -31,4 +33,5 @@
 (apply max
        (filter palindrome-number?
                (map (curry apply *)
-                    (apply cartesian-product (make-list 2 (range 100 1000))))))
+                    (apply cartesian-product
+                           (make-list 2 (range 100 1000))))))
