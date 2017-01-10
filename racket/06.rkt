@@ -8,11 +8,7 @@
   (lambda (l)
     (apply + l)))
 
-(define square
-  (lambda (x)
-    (* x x)))
-
 ; Solution
-(let ((l (range n)))
-  (- (square (sum l))
-     (sum (map square l))))
+(let ((l (range 100)))
+  (- (sqr (sum l))
+     (sum (map sqr l))))
