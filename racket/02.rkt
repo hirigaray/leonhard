@@ -26,7 +26,6 @@
     (let ((cur (fibonacci in)))
       (if (>= cur lim)
         out
-
         (aux lim (+ 1 in) (cons cur out))))))
 
 ; Solution
