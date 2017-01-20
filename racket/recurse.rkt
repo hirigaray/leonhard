@@ -4,7 +4,10 @@
 
 #lang racket
 
-(provide recurse)
+(require racket/trace)
+
+(provide recurse
+         trace-recurse)
 
 (define-syntax recurse
    (syntax-rules ()
@@ -12,5 +15,14 @@
                <body> ...)
       (letrec
         ((<name> (lambda (<arg> ...)
+                   <body> ...)))
+        (<name> <default> ...)))))
+
+(define-syntax trace-recurse
+   (syntax-rules ()
+     ((recurse (<name> <arg> ...) (<default> ...)
+               <body> ...)
+      (letrec
+        ((<name> (trace-lambda (<arg> ...)
                    <body> ...)))
         (<name> <default> ...)))))

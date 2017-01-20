@@ -15,7 +15,8 @@
          #t l))
 
 (define (try-even-division-for-range n r)
-  (map (lambda (d) (equal? 0 (remainder n d)))
+  (map (lambda (d)
+         (equal? 0 (remainder n d)))
        (range 1 r)))
 
 (define (smallest-even-dividend-for-range r)

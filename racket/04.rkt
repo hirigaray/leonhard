@@ -9,6 +9,12 @@
 ; Find the largest palindrome made from
 ; the product of two 3-digit numbers.
 
+(define (all-true? l)
+  (foldl (lambda (a b)
+           (and a b))
+         #t
+         l))
+
 (define (integer->list n)
   (recurse (aux in out) (n '())
     (if (zero? in)
@@ -22,10 +28,7 @@
              (take l (floor (/ (length l) 2))))
            (backwards-rest
              (take (reverse l) (floor (/ (length l) 2)))))
-      (foldl (lambda (a b)
-               (and a b))
-             #t
-             (map equal? first-half backwards-rest)))))
+          (all-true? (map equal? first-half backwards-rest)))))
 
 ; Solution
 (apply max
