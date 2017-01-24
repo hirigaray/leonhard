@@ -18,4 +18,5 @@
         (aux (+ 1 in) (+ 1 out)))
       (aux in (+ 1 out)))))
 
+; Solution
 (generate-nth-prime 10001)
