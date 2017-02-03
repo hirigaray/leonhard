@@ -21,14 +21,13 @@
       out
       (aux (quotient in 10) (cons (remainder in 10) out)))))
 
-(define palindrome-number?
-  (lambda (n)
-    (let* ((l (integer->list n))
-           (first-half
-             (take l (floor (/ (length l) 2))))
-           (backwards-rest
-             (take (reverse l) (floor (/ (length l) 2)))))
-          (all-true? (map equal? first-half backwards-rest)))))
+(define (palindrome-number? n)
+  (let* ((l (integer->list n))
+         (first-half
+           (take l (floor (/ (length l) 2))))
+         (backwards-rest
+           (take (reverse l) (floor (/ (length l) 2)))))
+    (all-true? (map equal? first-half backwards-rest))))
 
 ; Solution
 (apply max

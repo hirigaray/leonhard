@@ -11,9 +11,8 @@
 ; By considering the terms in the Fibonacci sequence whose values do not
 ; exceed four million, find the sum of the even-valued terms.
 
-(define sum
-  (lambda (l)
-    (apply + l)))
+(define (sum l)
+  (apply + l))
 
 (define (fibonacci i)
   (recurse (aux in out index) (1 0 i)

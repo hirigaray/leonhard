@@ -21,12 +21,11 @@
 
 ; NOTE: Once the chain starts the terms are allowed to go above one million.
 
-(define collatz
-  (lambda (n)
-    (cond
-      ((= n 1) 1)
-      ((= 0 (remainder n 2)) (/ n 2))
-      (else (+ 1 (* n 3))))))
+(define (collatz n)
+  (cond
+    ((= n 1) 1)
+    ((= 0 (remainder n 2)) (/ n 2))
+    (else (+ 1 (* n 3)))))
 
 (define (collatz-length n)
   (recurse (aux in out) (n 0)

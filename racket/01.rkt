@@ -5,16 +5,14 @@
 
 ; Find the sum of all the multiples of 3 or 5 below 1000.
 
-(define sum
-  (lambda (l)
-    (apply + l)))
+(define (sum l)
+  (apply + l))
 
-(define checkfb
-  (lambda (n)
-    (cond
-      ((= 0 (remainder n 3)) n)
-      ((= 0 (remainder n 5)) n)
-      (else 0))))
+(define (checkfb n)
+  (cond
+    ((= 0 (remainder n 3)) n)
+    ((= 0 (remainder n 5)) n)
+    (else 0)))
 
 ; Solution
 (sum (map checkfb (range 1000)))
