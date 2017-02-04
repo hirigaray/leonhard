@@ -39,18 +39,18 @@
       out
       (aux (quotient in 10) (cons (remainder in 10) out)))))
 
-; na = # of adjacent integers
-; np = number to parse
-(define (greatest-product-with-adjacent-integers na np)
+; a = # of adjacent integers
+; p = number to parse
+(define (greatest-product-with-adjacent-integers a p)
   ; cl = current list
-  (recurse (aux in out cl) ((integer->list np) 0 '())
-    (if (> na (length in))
-      (cons cl out)
-      (let* ((new-list (take in na))
+  (recurse (aux in out cl) ((integer->list p) 0 '())
+    (if (> a (length in))
+      (list out cl)
+      (let* ((new-list (take in a))
              (new-product (apply * new-list)))
         (if (> new-product out)
           (aux (drop in 1) new-product new-list)
           (aux (drop in 1) out cl))))))
 
-  ; Solution
+; Solution
 (greatest-product-with-adjacent-integers 13 1000-digit-number)
