@@ -43,7 +43,7 @@
 ; p = number to parse
 (define (greatest-product-with-adjacent-integers a p)
   ; cl = current list
-  (recurse (aux in out cl) ((integer->list p) 0 '())
+  (let aux ((in (integer->list p)) (out 0) (cl '()))
     (if (> a (length in))
       (list out cl)
       (let* ((new-list (take in a))

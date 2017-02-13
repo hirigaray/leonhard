@@ -1,7 +1,5 @@
 #lang racket
 
-(require "recurse.rkt")
-
 ; Problem #4
 ; A palindromic number reads the same both ways. The largest palindrome
 ; made from the product of two 2-digit numbers is 9009 = 91 × 99.
@@ -16,7 +14,7 @@
          l))
 
 (define (integer->list n)
-  (recurse (aux in out) (n '())
+  (let aux ((in n) (out '()))
     (if (zero? in)
       out
       (aux (quotient in 10) (cons (remainder in 10) out)))))
