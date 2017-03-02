@@ -8,11 +8,10 @@
 (define (sum l)
   (apply + l))
 
-(define (checkfb n)
-  (cond
-    ((= 0 (remainder n 3)) n)
-    ((= 0 (remainder n 5)) n)
-    (else 0)))
+(define (fizzbuzz? n)
+  (or
+    (= 0 (remainder n 3))
+    (= 0 (remainder n 5))))
 
 ; Solution
-(sum (map checkfb (range 1000)))
+(sum (filter fizzbuzz? (range 1000)))
