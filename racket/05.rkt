@@ -10,7 +10,8 @@
 (define (all-true? l)
   (foldl (lambda (a b)
            (and a b))
-         #t l))
+         #t
+         l))
 
 (define (try-even-division-for-range n r)
   (map (lambda (d)
@@ -18,7 +19,7 @@
        (range 1 r)))
 
 (define (smallest-even-dividend-for-range r)
-  (recurse (aux in out) ('(#f) 1)
+  (let aux ((in '(#f)) (out 1))
     (if (all-true? in)
       (- out 1)
       (aux (try-even-division-for-range out r) (+ 1 out)))))

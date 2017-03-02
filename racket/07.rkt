@@ -10,11 +10,10 @@
 
 (define (generate-nth-prime n)
   (let aux ((in 1) (out 1))
-    (if (prime? out)
-      (if (equal? n in)
-        out
-        (aux (+ 1 in) (+ 1 out)))
-      (aux in (+ 1 out)))))
+    (cond
+      [(not (prime? out)) (aux in (+ 1 out))]
+      [(not (equal? n in)) (aux (+ 1 in) (+ 1 out))]
+      [else out])))
 
 ; Solution
 (generate-nth-prime 10001)

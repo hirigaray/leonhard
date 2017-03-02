@@ -6,11 +6,10 @@
 
 (define (factorize n)
   (let aux ((x n) (div 2) (out '()))
-    (if (= x 1)
-      out
-      (if (= 0 (remainder x div))
-        (aux (/ x div) div (cons div out))
-        (aux x (+ div 1) out)))))
+    (cond
+      [(= x 1) out]
+      [(= 0 (remainder x div)) (aux (/ x div) div (cons div out))]
+      [else (aux x (+ div 1) out)])))
 
 ; Solution
 (car (factorize 600851475143))

@@ -1,7 +1,5 @@
 #lang racket
 
-(require "recurse.rkt")
-
 ; Problem #14
 ; The following iterative sequence is defined for the set of positive
 ; integers:
@@ -28,19 +26,18 @@
     (else (+ 1 (* n 3)))))
 
 (define (collatz-length n)
-  (recurse (aux in out) (n 0)
+  (let aux ((in n) (out 0))
     (if (= in 1)
       out
       (aux (collatz in) (+ out 1)))))
 
 (define (collatz-longest-chain-with-limit lim)
-  (recurse (aux in out) (lim '(0 . 0))
-    (if (= in 0)
-      out
-      (let ((new (collatz-length in)))
-        (if (> new (cdr out))
-          (aux (- in 1) (cons in new))
-          (aux (- in 1) out))))))
+  (let aux ((in lim) (out '(0 0)))
+    (let ((new (collatz-length in)))
+      (cond
+        [(= in 0) out]
+        [(> new (cdr out)) (cons in new)]
+        [else (aux (- in 1) out)]))))
 
 ; Solution
 (collatz-longest-chain-with-limit 1000000)
