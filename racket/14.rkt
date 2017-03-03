@@ -21,9 +21,9 @@
 
 (define (collatz n)
   (cond
-    ((= n 1) 1)
-    ((= 0 (remainder n 2)) (/ n 2))
-    (else (+ 1 (* n 3)))))
+    [(= n 1) 1]
+    [(even? n) (/ n 2)]
+    [(odd? n) (+ 1 (* n 3))]))
 
 (define (collatz-length n)
   (let aux ((in n) (out 0))
