@@ -21,10 +21,9 @@
 
 (define (palindrome-number? n)
   (let* ((l (integer->list n))
-         (first-half
-           (take l (floor (/ (length l) 2))))
-         (backwards-rest
-           (take (reverse l) (floor (/ (length l) 2)))))
+         (half-length (floor (/ (length l) 2)))
+         (first-half (take l half-length))
+         (backwards-rest (take (reverse l) half-length)))
     (all-true? (map equal? first-half backwards-rest))))
 
 ; Solution
