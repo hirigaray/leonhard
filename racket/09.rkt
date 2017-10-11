@@ -12,23 +12,18 @@
 ; Find the product abc.
 
 (define (pythagorean-triple? a b c)
-  (and (< a b) (< b c)
-       (equal? (+ (sqr a) (sqr b)) (sqr c))))
+  (and (< a b c)
+       (equal? (sqrt (+ (sqr a) (sqr b))) c)))
 
 (define (special-triple? a b c)
   (and (pythagorean-triple? a b c)
        (equal? (+ a b c) 1000)))
 
-(define (makes-pythagorean-triple a b)
+(define (makes-pythagorean-triple? a b)
   (let ((c (sqrt (+ (sqr a) (sqr b)))))
-    (if (integer? c)
-      (list a b c)
-      #f)))
+    (and (integer? c) (list a b c))))
 
 ; Solution
 (apply * (car (filter (curry apply special-triple?)
-                      (filter (lambda (x) (not (false? x)))
-                              (map (curry apply makes-pythagorean-triple)
-                                   (cartesian-product (range 1 500) (range 1 500)))))))
-
-
+                      (filter-map (curry apply makes-pythagorean-triple?)
+                                  (cartesian-product (range 1 500) (range 1 500))))))
