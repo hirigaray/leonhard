@@ -9,7 +9,7 @@
   (apply + l))
 
 (define (self-power n)
-   (expt n n))
+  (expt n n))
 
 (define (integer->list n)
   (let aux ((in n) (out '()))
