@@ -10,7 +10,7 @@
 ; In combinatorics, we use the notation, 5C3 = 10.
 
 ; In general,
-; C(n,r) = 	; n! / r!(n−r)!
+; C(n,r) = n! / r!(n−r)!
 ; where r ≤ n, n! = n*(n−1)*...*3*2*1, and 0! = 1.
 
 ; It is not until n = 23, that a value exceeds one-million: C(23,10) = 1144066.
