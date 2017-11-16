@@ -7,28 +7,17 @@
 ; Find the largest palindrome made from
 ; the product of two 3-digit numbers.
 
-(define (all-true? l)
-  (foldl (lambda (a b)
-           (and a b))
-         #t
-         l))
-
 (define (integer->list n)
-  (let aux ((in n) (out '()))
+  (let aux [(in n) (out '())]
     (if (zero? in)
       out
       (aux (quotient in 10) (cons (remainder in 10) out)))))
 
 (define (palindrome-number? n)
-  (let* ((l (integer->list n))
-         (half-length (floor (/ (length l) 2)))
-         (first-half (take l half-length))
-         (backwards-rest (take (reverse l) half-length)))
-    (all-true? (map equal? first-half backwards-rest))))
+  (let [(ln (integer->list n))]
+    (equal? ln (reverse ln))))
 
 ; Solution
-(apply max
-       (filter palindrome-number?
-               (map (curry apply *)
-                    (apply cartesian-product
-                           (make-list 2 (range 100 1000))))))
+(apply max (filter palindrome-number?
+                   (map (curry apply *)
+                        (apply cartesian-product (make-list 2 (range 100 1000))))))
