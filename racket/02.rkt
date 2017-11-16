@@ -9,21 +9,18 @@
 ; By considering the terms in the Fibonacci sequence whose values do not
 ; exceed four million, find the sum of the even-valued terms.
 
-(define (sum l)
-  (apply + l))
-
 (define (fibonacci i)
-  (let aux ((in 1) (out 0) (index i))
+  (let aux [(in 1) (out 0) (index i)]
     (if (< index 0)
       out
       (aux (+ in out) in (- index 1)))))
 
 (define (generate-fibonacci-sequence n)
-  (let aux ((lim n) (in 1) (out '()) ())
+  (let aux [(lim n) (in 1) (out '())]
     (let ((cur (fibonacci in)))
       (if (>= cur lim)
         out
         (aux lim (+ 1 in) (cons cur out))))))
 
 ; Solution
-(sum (filter even? (generate-fibonacci-sequence 4000000)))
+(foldr + 0 (filter even? (generate-fibonacci-sequence 4000000)))
