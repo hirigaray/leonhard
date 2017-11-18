@@ -9,7 +9,7 @@
 ; What is the 10001st prime number?
 
 (define (generate-nth-prime n)
-  (let aux ((in 1) (out 1))
+  (let aux [(in 1) (out 1)]
     (cond
       [(not (prime? out)) (aux in (+ 1 out))]
       [(not (equal? n in)) (aux (+ 1 in) (+ 1 out))]
