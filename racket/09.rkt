@@ -11,19 +11,19 @@
 ; There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 ; Find the product abc.
 
-(define (pythagorean-triple? a b c)
+(define (pythagorean-triplet? a b c)
   (and (< a b c)
        (equal? (sqrt (+ (sqr a) (sqr b))) c)))
 
-(define (special-triple? a b c)
-  (and (pythagorean-triple? a b c)
+(define (special-triplet? a b c)
+  (and (pythagorean-triplet? a b c)
        (equal? (+ a b c) 1000)))
 
-(define (makes-pythagorean-triple? a b)
+(define (makes-pythagorean-triplet? a b)
   (let ((c (sqrt (+ (sqr a) (sqr b)))))
     (and (integer? c) (list a b c))))
 
 ; Solution
-(apply * (car (filter (curry apply special-triple?)
-                      (filter-map (curry apply makes-pythagorean-triple?)
+(apply * (car (filter (curry apply special-triplet?)
+                      (filter-map (curry apply makes-pythagorean-triplet?)
                                   (cartesian-product (range 1 500) (range 1 500))))))
