@@ -5,9 +5,9 @@
 ; the first one hundred natural numbers and the square of the sum.
 
 (define (sum l)
-  (apply + l))
+  (foldr + 0 l))
 
 ; Solution
-(let ((l (range 100)))
+(let [(l (range 100))]
   (- (sqr (sum l))
      (sum (map sqr l))))
