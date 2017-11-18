@@ -7,21 +7,15 @@
 ; What is the smallest positive number that is evenly divisible by all of
 ; the numbers from 1 to 20?
 
-(define (all-true? l)
-  (foldl (lambda (a b)
-           (and a b))
-         #t
-         l))
-
 (define (try-even-division-for-range n r)
   (map (lambda (d)
          (equal? 0 (remainder n d)))
        (range 1 r)))
 
 (define (smallest-even-dividend-for-range r)
-  (let aux ((in '(#f)) (out 1))
-    (if (all-true? in)
-      (- out 1)
+  (let aux [(in (list #f)) (out 1)]
+    (if (andmap identity in)
+      out
       (aux (try-even-division-for-range out r) (+ 1 out)))))
 
 ; Solution
