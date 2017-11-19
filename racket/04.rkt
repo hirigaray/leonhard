@@ -7,11 +7,7 @@
 ; Find the largest palindrome made from
 ; the product of two 3-digit numbers.
 
-(define (integer->list n)
-  (let aux [(in n) (out '())]
-    (if (zero? in)
-      out
-      (aux (quotient in 10) (cons (remainder in 10) out)))))
+(require "aux.rkt")
 
 (define (palindrome-number? n)
   (let [(ln (integer->list n))]
