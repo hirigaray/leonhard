@@ -2,6 +2,9 @@
 
 ; Problem #12
 ; Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+
+(require "aux.rkt")
+
 (define number-list
   '(37107287533902102798797998220837590246510135740250
     46376937677490009712648124896970078050417018260538
@@ -103,18 +106,6 @@
     72107838435069186155435662884062257473692284509516
     20849603980134001723930671666823555245252804609722
     53503534226472524250874054075591789781264330331690))
-
-(define (integer->list n)
-  (let aux [(in n) (out '())]
-    (if (zero? in)
-      out
-      (aux (quotient in 10) (cons (remainder in 10) out)))))
-
-(define (list->integer l)
-  (let aux [(in l) (out 0)]
-    (if (null? in)
-      out
-      (aux (cdr in) (+ (car in) (* 10 out))))))
 
 ; Solution
 (list->integer (take (integer->list (foldr + 0 number-list)) 10))
