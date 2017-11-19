@@ -13,4 +13,4 @@
 ; Solution
 (let* [(sum (foldl + 0 (map self-power (range 1 1001))))
        (digits (integer->list sum))]
-  (list->integer (drop digits (- (length digits) 10))))
+  (list->integer (take-right digits 10)))
